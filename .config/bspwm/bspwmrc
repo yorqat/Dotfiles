@@ -24,28 +24,59 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ////
 
-# Hotkey daemon - bspwm does not have a keybinding impl
-pgrep -x sxhkd > /dev/null || sxhkd &
-# Compositor for window translucency
-picom &
-# Polybar
-pgrep -x polybar > /dev/null || $HOME/.config/polybar/launch.sh &
-# Feh for background image - set to change every 5 minutes
-pgrep -x feh > /dev/null || feh --hide-pointer --bg-scale -qrzFD 360.0 ~/Pictures/z-w-gu_wallpapers &
-# Make sure that blueman-applet is running before we can run blueman-nanager
-pgrep -x blueman-applet > /dev/null || blueman-applet &
+# {{{ Hotkey daemon - bspwm does not have a keybinding impl
+    pgrep -x sxhkd > /dev/null || sxhkd &
+# }}}
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# {{{ bspwm config
+    bspc monitor -d Chat Code Crawl Cafe 
 
-bspc config border_width         2
-bspc config window_gap          12
+    bspc config border_width        2
+    bspc config window_gap          12
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+    bspc config split_ratio         0.52
+    bspc config borderless_monocle  true
+    bspc config gapless_monocle     true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-# bspc rule -a Google-chrome-beta desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+    bspc rule -a Gimp desktop='^8' state=floating follow=on
+    bspc rule -a mplayer2 state=floating
+    bspc rule -a Kupfer.py focus=on
+    bspc rule -a Screenkey manage=off
+
+    bspc rule -a Peek state=floating
+    bspc rule -a screengrab state=floating
+
+    bspc rule -a discord desktop='^1' 
+    bspc rule -a Code\ -\ Insiders desktop='^2'
+
+    bspc rule -a Google-chrome-beta desktop='^3' -o
+    bspc rule -a Alacritty desktop='^4' -o
+
+    bspc rule -a Blueman-manager desktop='^4'
+    bspc rule -a Pavucontrol desktop='^4'
+# }}}
+
+# {{{ Autostarts
+    # Compositor for window translucency
+    picom &
+
+    # Polybar
+    $HOME/.config/polybar/launch.sh &
+
+    # Feh for background image - set to change every 5 minutes
+    pgrep -x feh > /dev/null || feh --hide-pointer --bg-scale -qrzFD 360.0 ~/Pictures/z-w-gu_wallpapers &
+    
+    # Make sure that blueman-applet is running before we can run blueman-nanager
+    pgrep -x blueman-applet > /dev/null || blueman-applet &
+
+    # Make sure our network manager applet is up
+    pgrep -x nm-applet > /dev/null || nm-applet &
+
+    google-chrome-beta &
+    code-insiders &
+    discord &
+
+    alacritty -e ncmpcpp &
+    blueman-manager &
+    pavucontrol &  
+# }}}
