@@ -2,6 +2,10 @@
 # wm independent hotkeys
 #
 
+# music controls
+super + p
+	mpc toggle
+
 # audio controls
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -6%

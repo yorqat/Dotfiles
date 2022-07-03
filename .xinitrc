@@ -1,1 +1,1 @@
-exec bspwm
+exec dbus-launch bspwm

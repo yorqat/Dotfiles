@@ -29,7 +29,7 @@ SOFTWARE.
 # }}}
 
 # {{{ bspwm config
-    bspc monitor -d Chat Code Crawl Cafe 
+    bspc monitor -d Chat Code Crawl Cafe C 
 
     bspc config border_width        2
     bspc config window_gap          12
@@ -50,10 +50,10 @@ SOFTWARE.
     bspc rule -a Code\ -\ Insiders desktop='^2'
 
     bspc rule -a Google-chrome-beta desktop='^3' -o
-    bspc rule -a Alacritty desktop='^4' -o
 
     bspc rule -a Blueman-manager desktop='^4'
     bspc rule -a Pavucontrol desktop='^4'
+    bspc rule -a Steam desktop='^5'
 # }}}
 
 # {{{ Autostarts
@@ -72,11 +72,12 @@ SOFTWARE.
     # Make sure our network manager applet is up
     pgrep -x nm-applet > /dev/null || nm-applet &
 
-    google-chrome-beta &
-    code-insiders &
-    discord &
+    pgrep -x chrome > /dev/null || google-chrome-beta  &
+    pgrep -x code-insiders > /dev/null || code-insiders &
+    pgrep -x discord > /dev/null || discord &
 
-    alacritty -e ncmpcpp &
+    pgrep -x steam > /dev/null || steam &
     blueman-manager &
     pavucontrol &  
+    pgrep -x ncmpcpp > /dev/null || alacritty -e ncmpcpp &
 # }}}
