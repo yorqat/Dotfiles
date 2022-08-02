@@ -29,7 +29,7 @@ SOFTWARE.
 # }}}
 
 # {{{ bspwm config
-    bspc monitor -d Chat Code Crawl Cafe C 
+    bspc monitor -d Chat Code Crawl Cafe C Computer 
 
     bspc config border_width        2
     bspc config window_gap          12
@@ -38,13 +38,9 @@ SOFTWARE.
     bspc config borderless_monocle  true
     bspc config gapless_monocle     true
 
-    bspc rule -a Gimp desktop='^8' state=floating follow=on
-    bspc rule -a mplayer2 state=floating
-    bspc rule -a Kupfer.py focus=on
-    bspc rule -a Screenkey manage=off
-
     bspc rule -a Peek state=floating
     bspc rule -a screengrab state=floating
+    bspc rule -a Alacritty state=floating
 
     bspc rule -a discord desktop='^1' 
     bspc rule -a Code\ -\ Insiders desktop='^2'
@@ -54,6 +50,7 @@ SOFTWARE.
     bspc rule -a Blueman-manager desktop='^4'
     bspc rule -a Pavucontrol desktop='^4'
     bspc rule -a Steam desktop='^5'
+    bspc rule -a helvum desktop='^4'
 # }}}
 
 # {{{ Autostarts
@@ -76,8 +73,6 @@ SOFTWARE.
     pgrep -x code-insiders > /dev/null || code-insiders &
     pgrep -x discord > /dev/null || discord &
 
-    pgrep -x steam > /dev/null || steam &
     blueman-manager &
-    pavucontrol &  
-    pgrep -x ncmpcpp > /dev/null || alacritty -e ncmpcpp &
+    pgrep -x helvum > /dev/null || helvum &
 # }}}
