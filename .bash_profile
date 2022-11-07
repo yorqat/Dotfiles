@@ -21,7 +21,10 @@ fi
 export PATH=$HOME/.cargo/bin:$PATH
 export DENO_INSTALL="/home/yor/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+export CHROME_EXECUTABLE='google-chrome-beta'
 
+imwheel
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
 	exec startx
 fi

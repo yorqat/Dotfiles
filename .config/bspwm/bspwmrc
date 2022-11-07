@@ -29,10 +29,13 @@ SOFTWARE.
 # }}}
 
 # {{{ bspwm config
-    bspc monitor -d Chat Code Crawl Cafe C Computer 
+    bspc monitor -d Chat Code0 Code1 Code2 Crawl Cafe Cteam Candroid 
 
-    bspc config border_width        2
-    bspc config window_gap          12
+    # rounded corners
+    bspc config border_radius 10
+
+    bspc config border_width        0
+    bspr config window_gap          0
 
     bspc config split_ratio         0.52
     bspc config borderless_monocle  true
@@ -45,12 +48,12 @@ SOFTWARE.
     bspc rule -a discord desktop='^1' 
     bspc rule -a Code\ -\ Insiders desktop='^2'
 
-    bspc rule -a Google-chrome-beta desktop='^3' -o
+    bspc rule -a Google-chrome-beta desktop='^5' -o
 
-    bspc rule -a Blueman-manager desktop='^4'
-    bspc rule -a Pavucontrol desktop='^4'
-    bspc rule -a Steam desktop='^5'
-    bspc rule -a helvum desktop='^4'
+    bspc rule -a Blueman-manager desktop='^6'
+    bspc rule -a Pavucontrol desktop='^6'
+    bspc rule -a helvum desktop='^6'
+    bspc rule -a Steam desktop='^7'
 # }}}
 
 # {{{ Autostarts
@@ -61,7 +64,7 @@ SOFTWARE.
     $HOME/.config/polybar/launch.sh &
 
     # Feh for background image - set to change every 5 minutes
-    pgrep -x feh > /dev/null || feh --hide-pointer --bg-scale -qrzFD 360.0 ~/Pictures/z-w-gu_wallpapers &
+    pgrep -x feh > /dev/null || feh --hide-pointer --bg-scale -qrzFD 1.0 ~/Pictures/z-w-gu_wallpapers &
     
     # Make sure that blueman-applet is running before we can run blueman-nanager
     pgrep -x blueman-applet > /dev/null || blueman-applet &
@@ -75,4 +78,8 @@ SOFTWARE.
 
     blueman-manager &
     pgrep -x helvum > /dev/null || helvum &
+
+    # move to first window
+    sleep 1
+    bspc desktop -f ^1
 # }}}
